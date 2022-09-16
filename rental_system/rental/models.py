@@ -32,6 +32,11 @@ class Rentals(models.Model):
         max_length=255,
         verbose_name='Адрес рентала'
     )
+    picture = models.ImageField(
+        upload_to='profile_pictures',
+        null=True,
+        verbose_name='Фото рентала',
+    )
 
     """def id(self):
         return self.pk"""
@@ -67,6 +72,11 @@ class Devices(models.Model):
         choices=[('EXCELLENT', 'ОТЛИЧНОЕ'),
                  ('GOOD', 'ХОРОШЕЕ'),
                  ('BAD', 'ПЛОХОЕ')]
+    )
+    picture = models.ImageField(
+        upload_to='profile_pictures',
+        null=True,
+        verbose_name='Фото устройства',
     )
 
     """def id(self):
