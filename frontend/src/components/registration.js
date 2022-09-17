@@ -16,7 +16,7 @@ export const Register = () => {
     const email = document.forms[0][0].value;
     const password = document.forms[0][1].value;
     console.log(email, password);
-    const response = axios.post("http://localhost:8081/api/users", {
+    const response = axios.post("/api/v1/registration", {
       email: email, hashed_password: password
     })
 

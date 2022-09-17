@@ -28,12 +28,12 @@ export function Device(props) {
                 <table className="table is-fullwidth">
                     <thead>
                     <tr>
-                        <td rowSpan="2"><img src="https://zakolesnik.ru/Sony_FX3.jpeg" alt={state.name}/></td>
-                        <td><h2 className="title is-4">{state.name} {state.brand}</h2></td>
+                        <td rowSpan="2"><img src="https://zakolesnik.ru/Sony_FX3.jpeg" alt={state.device.name}/></td>
+                        <td><h2 className="title is-4">{state.device.name} {state.device.brand}</h2></td>
                     </tr>
                     <tr>
                         <td>
-                            В наличие: {state.available_count} шт.
+                            В наличие: {state.device.available_count} шт.
                             <br/>
                             <button className="button is-primary" onClick={() => setActiveModal(true)}>
                                 Арендовать

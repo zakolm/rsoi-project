@@ -15,7 +15,7 @@ const RouteGuard = (navigate) => {
                 },
             };
 
-            const response = await fetch("http://127.0.0.1:8081/api/users/me", requestOptions);
+            const response = await fetch("/api/v1/me", requestOptions);
 
             // console.log(response);
             if (!response.ok) {
@@ -48,7 +48,7 @@ export const RouteGuard_private = (navigate) => {
                 },
             };
 
-            const response = await fetch("http://127.0.0.1:8081/api/users/me", requestOptions);
+            const response = await fetch("/api/v1/me", requestOptions);
 
             console.log(response.ok);
             if (!response.ok) {

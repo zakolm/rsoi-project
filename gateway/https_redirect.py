@@ -222,7 +222,7 @@ async def list_reservations(username: str = Header('', alias='Authorization')):
 
 @app.post("/api/v1/reservations")
 async def reservations(schema: ReserveSchema,
-                       username: str = Header('', alias='X-User-Name')
+                       username: str = Header('', alias='Authorization')
                        ) -> ReservationResponse:
     async with aiohttp.ClientSession() as session:
         session.headers.add('X-User-Name', username)

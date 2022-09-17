@@ -1,13 +1,14 @@
 import React, {useState} from "react";
 import {CreateOrder} from "./createOrder";
-import {Navigate, useNavigate} from "react-router-dom";
+import {Navigate, useLocation, useNavigate} from "react-router-dom";
 
 export const DeviceModal = ({active, handleModal, token}) => {
+    const {state, prev_state} = useLocation();
     const [tillDate, setTillDate] = useState("");
 
     let navigate = useNavigate();
     const routeChange = () => {
-        CreateOrder({email: token});
+        CreateOrder(state.rental, state.device, tillDate);
         navigate('/orders');
     }
 

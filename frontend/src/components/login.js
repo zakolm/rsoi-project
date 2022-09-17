@@ -25,7 +25,7 @@ export const Login = () => {
 
         console.log(tttmp)
 
-        const response = axios.post("http://localhost:8081/api/token", tttmp, {
+        const response = axios.post("/api/v1/login", tttmp, {
             headers:{'accept': 'application/json',
                 'Content-Type': 'application/x-www-form-urlencoded'}
         });

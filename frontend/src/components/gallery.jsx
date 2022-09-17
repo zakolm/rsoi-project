@@ -64,7 +64,7 @@ export function _About(props) {
     const [myItems, setMyItems] = React.useState();
 
     React.useEffect(() => {
-    axios.get(`http://127.0.0.1:8080/api/v1/rentals/${state.rentalUid}/devices?city=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0&page=1&size=10`).then((response) => {
+    axios.get(`/api/v1/rentals/${state.rentalUid}/devices?city=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0&page=1&size=10`).then((response) => {
       setMyItems(response.data);
     });
   }, []);
@@ -77,7 +77,7 @@ export function _About(props) {
       </div>
           <div className="houses">
               {myItems?.items.map((e) => (
-              <div className="house" onClick={() => navigate('/device', { state: e })}>
+              <div className="house" onClick={() => navigate('/device', { state: {rental: state, device: e} })}>
                   <a className="img" >
                       <img src="https://mobile.photoprocenter.ru/files/20160302161705Profoto_901024_D1_Air_500_w_s_605739.jpg" alt={e.name}/>
                   </a>

@@ -10,6 +10,17 @@ export const Orders = () => {
     const [loaded, setLoaded] = useState(false);
 
     const getOrders = React.useCallback(async () => {
+        const requestOptions_email = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + token,
+            },
+        };
+        const response_email = await fetch("http://127.0.0.1:8081/api/users/me", requestOptions_email);
+        console.log(response_email)
+        console.log(response_email.email)
+
         const requestOptions = {
             method: "GET",
             headers: {
@@ -31,6 +42,7 @@ export const Orders = () => {
 
     useEffect(() => {
         getOrders();
+        // console.log(moment());
     }, []);
 
     return (
@@ -54,6 +66,7 @@ export const Orders = () => {
                         <th>Адрес</th>
                         <th>Начало аренды</th>
                         <th>Конец аренды</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -67,6 +80,14 @@ export const Orders = () => {
                             <td>{order.rental.city}, {order.rental.address}</td>
                             <td>{moment(order.startDate).format("MMM Do YY")}</td>
                             <td>{moment(order.tillDate).format("MMM Do YY")}</td>
+                            <td>
+                                {(order.status === "RENTED") ? (
+                                    <button className="button mr-2 is-info is-light">
+                                        Сдать
+                                    </button>
+                                ):(<></>)
+                            }
+                            </td>
                         </tr>
                     ))}
                     </tbody>
