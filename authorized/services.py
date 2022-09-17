@@ -36,6 +36,7 @@ async def create_user(user: _schemas.UserCreate, db: _orm.Session):
         email=user.email,
         hashed_password=_hash.bcrypt.hash(user.hashed_password)
     )
+    print('==========>', user_obj)
     db.add(user_obj)
     db.commit()
     db.refresh(user_obj)
