@@ -1,0 +1,29 @@
+name: GitHub Classroom Workflow
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  build:
+    name: Autograding
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+
+      - uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: reservationsystem-zakolm-rsoi2
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+          usedocker: true
+
+
+
+      - name: Check out the repo
+        uses: actions/checkout@v2
